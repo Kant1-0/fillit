@@ -1,2 +1,2 @@
-# fillit
-Emulate a kind of Tetris player able to create the smallest square with given tetrominos.
+# Fillit
+Emulate a kind of Tetris player able to create the smallest square with given tetrominos. A 42's school project. See the pdf file ;)
