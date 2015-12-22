@@ -45,52 +45,71 @@ BOOL	check_curs(char buf, size_t cur_x)
 	return (TRUE);
 }
 
-BOOL	register_block(size_t *ncase, int temp[][], size_t cur_x, size_t cur_y)
-{
-	temp[ncase][0] = cur_x;
-	temp[ncase][1] = cur_y;
-	ncase++;
-	if (ncase > 4)
-		return (FAIL);
-	return (SUCCESS);
-}
-
 BOOL	list_tetriminos(char *buf, int ret)
 {
-	t_list		list;
+	t_circlst	*list;
+	int			temp[4][1];
+	size_t		cur_x;
+	size_t		cur_y;
+	size_t		ncase;
+	size_t		ntetri;
+	size_t		i;
 	
-	list.list = ft_circlst_create();
-	list.cur_x = 1;
-	list.cur_y = 1;
-	list.ncase = 0;
-	list.ntetri = 0;
-	list.i = 0;
+	list = ft_circlst_create();
+	cur_x = 1;
+	cur_y = 1;
+	ncase = 0;
+	ntetri = 0;
+	i = 0;
 	while (i <= (size_t)ret)
 	{
-		while (list.cur_y < 5)
+		printf(KRED "\nBack at cur_y < 5   x:%lu & y:%lu - i was %lu|%c|\n"KORG"Ret is %d\n\n" RESET, cur_x, cur_y, i, buf[i], ret);
+		while (cur_y < 5)
 		{
-			if (!check_curs(buf[i], list.cur_x))
+			if (!check_curs(buf[i], cur_x))
+			{
+				printf(KRED "Failed at x:%lu & y:%lu - i was %lu|%c|\n" RESET, cur_x, cur_y, i, buf[i]);
 				return (FAIL);
+			}
 			if (buf[i] == '#')
-				!register_block(list.ncase, list.temp, list.cur_x, list.cur_y) ? 
+			{
+				temp[ncase][0] = cur_x;
+				temp[ncase][1] = cur_y;
+				ncase++;
+				printf(KGRN "'#' ws registerd at x:%lu & y:%lu - i was %lu|%c|  &  ncase was %lu\n" RESET, cur_x, cur_y, i, buf[i], ncase);
+				if (ncase > 4)
+				{
+					printf(KRED "Too many blocks in tetriminos, ncase : %lu\n"RESET, ncase);
+					return (FAIL);
+				}
+			}
 			else if (buf[i] == '\n' && cur_x == 5)
 			{
+				printf(KORG "Line at x:%lu & y:%lu was checked - i was %lu|\\n|\n\n" RESET, cur_x, cur_y, i);
 				cur_x = 0;
 				cur_y++;
 			}
+			else
+				printf("Curs at x:%lu & y:%lu was checked - i was %lu|%c|\n", cur_x, cur_y, i, buf[i]);
 			cur_x++;
 			i++;
 		}
 		if (cur_y == 5 && (buf[i] == '\n' || buf[i] == 0))
 		{
 			ntetri++;
+			printf(KGRN "\nTetri number: %lu succesfully checked\n" RESET, ntetri);
 			i++;
 			cur_y = 1;
 			cur_x = 1;
 			ncase = 0;
+			printf(KORG "Curs is now x:%lu & y:%lu   with i = %lu\n\n" RESET, cur_x, cur_y, i);
 		}
 		else
+		{
+			printf(KRED "Failed at '\\n' pos was x:%lu & y:%lu - i was %lu|%c|\n" RESET, cur_x, cur_y, i, buf[i]);
 			return (FAIL);
+		}
 	}
+	printf(KRED "End of WhileLoop at x:%lu & y:%lu - i was %lu|%c|\n"KORG"Ret is %d\n\n"RESET, cur_x, cur_y, i, buf[i], ret);
 	return (SUCCESS);
 }

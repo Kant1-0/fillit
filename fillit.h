@@ -32,6 +32,31 @@
 #define KORG  "\x1B[33m"
 #define RESET "\033[0m"
 
+typedef struct	s_position
+{
+	int		x;
+	int		y;
+}				t_pos;
+
+typedef struct	s_tetriminos
+{
+	t_pos	block1;
+	t_pos	block2;
+	t_pos	block3;
+	t_pos	block4;
+} 				t_tetri;
+
+typedef struct	s_listing
+{
+	t_circlst	*list;
+	int			temp[4][1];
+	size_t		cur_x;
+	size_t		cur_y;
+	size_t		ncase;
+	size_t		ntetri;
+	size_t		i;
+}				t_list;
+
 BOOL	read_file(char const *file, char *buf);
 BOOL	list_tetriminos(char *buf, int ret);
 
