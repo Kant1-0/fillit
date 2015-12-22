@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:08:49 by qfremeau          #+#    #+#             */
-/*   Updated: 2015/12/09 14:33:59 by qfremeau         ###   ########.fr       */
+/*   Updated: 2015/12/22 13:34:43 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,32 @@ typedef struct	s_position
 
 typedef struct	s_tetriminos
 {
-	t_pos	block1;
-	t_pos	block2;
-	t_pos	block3;
-	t_pos	block4;
+	t_pos	bloc1;
+	t_pos	bloc2;
+	t_pos	bloc3;
+	t_pos	bloc4;
 } 				t_tetri;
 
 typedef struct	s_listing
 {
 	t_circlst	*list;
-	int			temp[4][1];
-	size_t		cur_x;
-	size_t		cur_y;
-	size_t		ncase;
-	size_t		ntetri;
+	int			*tmp;
+	size_t		x;
+	size_t		y;
+	size_t		bloc;
+	size_t		tetri;
 	size_t		i;
-}				t_list;
+}				t_listing;
 
-BOOL	read_file(char const *file, char *buf);
+int		read_file(char const *file, char *buf);
 BOOL	list_tetriminos(char *buf, int ret);
+BOOL	check_curs(char buf, size_t cur_x);
+BOOL	sav_bloc(size_t *bloc, int **tmp, size_t cur_x, size_t cur_y);
+void	go_backline(size_t *cur_x, size_t *cur_y);
+void	sav_tetri(size_t *tetri, size_t *i, size_t *cur_x, size_t *cur_y, 
+	size_t *bloc);
+void	init_vars(size_t *cur_x, size_t *cur_y, size_t *bloc, size_t *tetri, 
+	size_t *i, t_circlst **list);
+
 
 #endif
