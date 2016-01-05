@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:12:52 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/05 17:47:44 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/05 23:27:37 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int		main(int argc, char const *argv[])
 	ret = read_file(argv[1], buf);
 	if (ret == FAIL)
 		return (0);
-	printf(KORG "\nRet is %d\n\n" RESET, ret);
-	printf("%s\n", buf);	//Check if read_file worked
+	IFDEBUG(printf(KORG "\nRet is %d\n\n" RESET "%s\n", ret, buf);)
 	list_tetriminos(buf, ret);
 	
 	return (0);
