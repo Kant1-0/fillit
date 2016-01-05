@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:08:49 by qfremeau          #+#    #+#             */
-/*   Updated: 2015/12/22 13:34:43 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/05 17:54:15 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct	s_tetriminos
 typedef struct	s_listing
 {
 	t_circlst	*list;
-	int			*tmp;
 	size_t		x;
 	size_t		y;
 	size_t		bloc;
@@ -60,7 +59,7 @@ typedef struct	s_listing
 int		read_file(char const *file, char *buf);
 BOOL	list_tetriminos(char *buf, int ret);
 BOOL	check_curs(char buf, size_t cur_x);
-BOOL	sav_bloc(size_t *bloc, int **tmp, size_t cur_x, size_t cur_y);
+BOOL	sav_bloc(size_t *bloc, size_t cur_x, size_t cur_y);
 void	go_backline(size_t *cur_x, size_t *cur_y);
 void	sav_tetri(size_t *tetri, size_t *i, size_t *cur_x, size_t *cur_y, 
 	size_t *bloc);

@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:52:55 by qfremeau          #+#    #+#             */
-/*   Updated: 2015/12/22 13:43:15 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/05 17:59:43 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,30 @@ int		read_file(char const *file, char *buf)
 
 BOOL	list_tetriminos(char *buf, int ret)
 {
+	printf(KORG "Entering list_tetriminos\n" RESET);
 	t_listing		lst;
-	
+	printf(KGRN "__Succeed t_listing\n" RESET);
+
 	init_vars(&lst.x, &lst.y, &lst.bloc, &lst.tetri, &lst.i, &lst.list);
+	printf(KORG "Begin while(lst.i <= ret)\n" RESET);
 	while (lst.i <= (size_t)ret)
 	{
 		while (lst.y < 5)
 		{
 			if (!check_curs(buf[lst.i], lst.x))
+			{
+				printf(KRED "__Failed list_tetriminos\n" RESET);
 				return (FAIL);
+			}
 			if (buf[lst.i] == '#')
 			{
-				if (!sav_bloc(&lst.bloc, &lst.tmp, lst.x, lst.y))
+				if (!sav_bloc(&lst.bloc, lst.x, lst.y))
+				{
+					printf(KRED "__Failed list_tetriminos\n" RESET);
 					return (FAIL);
+				}
+				else
+					printf(KGRN "'#' ws registerd at x:%lu & y:%lu - i was %lu|%c|  &  ncase was %lu\n" RESET, lst.x, lst.y, lst.i, buf[lst.i], lst.bloc);
 			}
 			else if (buf[lst.i] == '\n' && lst.x == 5)
 				go_backline(&lst.x, &lst.y);
@@ -57,7 +68,11 @@ BOOL	list_tetriminos(char *buf, int ret)
 		if (lst.y == 5 && (buf[lst.i] == '\n' || buf[lst.i] == 0))
 			sav_tetri(&lst.tetri, &lst.i, &lst.x, &lst.y, &lst.bloc);
 		else
+		{
+			printf(KRED "__Failed list_tetriminos\n" RESET);
 			return (FAIL);
+		}
 	}
+	printf(KGRN "__Succeed list_tetriminos\n" RESET);
 	return (SUCCESS);
 }

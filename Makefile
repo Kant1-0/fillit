@@ -6,7 +6,7 @@
 #    By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 11:53:00 by qfremeau          #+#    #+#              #
-#    Updated: 2015/12/22 13:43:33 by qfremeau         ###   ########.fr        #
+#    Updated: 2016/01/05 17:25:02 by qfremeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 
 all:
-	gcc $(FLAGS) -c $(SRC)
-	gcc -o $(NAME) $(FLAGS) $(OBJ) $(LIB)
+	clang $(FLAGS) -c $(SRC)
+	clang -o $(NAME) $(FLAGS) $(OBJ) $(LIB)
 
 $(NAME): all
 
@@ -29,3 +29,30 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+libs:
+	cd ../lib-list && \
+		make
+	cp -f ../lib-list/list.a lib/
+	cp -f ../lib-list/list.h lib/
+	cd ../libft && \
+		make
+	cp -f ../libft/libft.a lib/
+	cp -f ../libft/libft.h lib/
+
+relibs:
+	cd ../lib-list && \
+		make re
+	cp -f ../lib-list/list.a lib/
+	cp -f ../lib-list/list.h lib/
+	cd ../libft && \
+		make re
+	cp -f ../libft/libft.a lib/
+	cp -f ../libft/libft.h lib/
+
+cleanlibs:
+	cd ../lib-list && \
+		make fclean
+	cd ../libft && \
+		make fclean
+	rm -f lib/list.a lib/list.h lib/libft.a lib/libft.a

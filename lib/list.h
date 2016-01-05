@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:30:40 by qfremeau          #+#    #+#             */
-/*   Updated: 2015/12/21 17:38:34 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/05 16:47:55 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <string.h>
 # include <stdlib.h>
-//# include <unistd.h>
-# include "libft.h"
 
 typedef	struct	s_circlst
 {
