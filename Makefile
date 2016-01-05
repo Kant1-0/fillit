@@ -6,7 +6,7 @@
 #    By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 11:53:00 by qfremeau          #+#    #+#              #
-#    Updated: 2016/01/05 17:25:02 by qfremeau         ###   ########.fr        #
+#    Updated: 2016/01/05 18:40:10 by qfremeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,3 +56,19 @@ cleanlibs:
 	cd ../libft && \
 		make fclean
 	rm -f lib/list.a lib/list.h lib/libft.a lib/libft.a
+
+retetri:
+	cd generator/ && \
+		make re
+
+tetrivalid:
+	cd generator/ && \
+		./tetri-gen -v -f 6
+	cp -f generator/sample.fillit ./
+	cat -e sample.fillit
+
+tetrifalse:
+	cd generator/ && \
+		./tetri-gen -i -f 6
+	cp -f generator/sample.fillit ./
+	cat -e sample.fillit
