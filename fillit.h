@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:08:49 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/05 23:35:36 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/06 13:41:25 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,29 @@
 
 // ************************************************************************** //
 // Debug Conditionnal Macro
+// Uncomment #define _MACRO to choose how to debug
 #define _DEBUG
 
 #ifdef _DEBUG
 #define IFDEBUG(x) x
 #else
 #define IFDEBUG(x)
+#endif
+
+#define _TRACE
+
+#ifdef _TRACE
+#define IFTRACE(x) x
+#else
+#define IFTRACE(x)
+#endif
+
+#define _TRACE2
+
+#ifdef _TRACE2
+#define IFTRACE2(x) x
+#else
+#define IFTRACE2(x)
 #endif
 
 // ************************************************************************** //
@@ -56,6 +73,7 @@ typedef struct	s_position
 
 typedef struct	s_tetriminos
 {
+	size_t	nu;
 	t_pos	bloc1;
 	t_pos	bloc2;
 	t_pos	bloc3;
@@ -66,6 +84,7 @@ typedef struct	s_tetriminos
 typedef struct	s_listing
 {
 	t_circlst	*list;
+	t_tetri		minos;
 	size_t		x;
 	size_t		y;
 	size_t		bloc;
