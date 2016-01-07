@@ -21,7 +21,7 @@ Libs will be copy/paste into the **fillit/lib** folder.
 
 ___________
 #### Render Tetriminos
-You can render different type of tetriminos thanks to the (https://github.com/hqro/Tetriminos-generator "Tetriminos Generator") made by hqro. The makefile handle invalid and valid samples of 6 tetriminos. If you wanna learn more about it go at original project git.
+You can render different type of tetriminos thanks to the [Tetriminos Generator](https://github.com/hqro/Tetriminos-generator) made by hqro. The makefile handle invalid and valid samples of 6 tetriminos. If you wanna learn more about it go at original project git.
 
 To compile the Tetriminos generator:
 
