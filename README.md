@@ -1,9 +1,9 @@
 # Fillit
-Emulate a kind of Tetris IA able to create the smallest square with given tetriminos. A 42's school project. See the (https://github.com/Kant1-0/fillit/blob/master/doc/fillit.fr.pdf "pdf file") for more information.
+Emulate a kind of Tetris IA able to create the smallest square with given tetriminos. A 42's school project. See the [PDF](https://github.com/Kant1-0/fillit/doc/fillit.fr.pdf) for more information.
 
 ___________
 #### Compile
-To compile you should first download the libs: (https://github.com/Kant1-0/libft "libft") and (https://github.com/Kant1-0/lib-list "lib-list"). *If cloned as separate folders in the directory, no need to change the path in the Makefile. Otherwise you can change it as* ***PATHLIBFT*** *and* ***PATHLIBLIST***.
+To compile you should first download the libs: [libft](https://github.com/Kant1-0/libft) and [lib-list] (https://github.com/Kant1-0/lib-list). *If cloned as separate folders in the directory, no need to change the path in the Makefile. Otherwise you can change it as* ***PATHLIBFT*** *and* ***PATHLIBLIST***.
 
 Then execute this code in fillit folder.
 
