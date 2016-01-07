@@ -1,5 +1,5 @@
 # Fillit
-Emulate a kind of Tetris IA able to create the smallest square with given tetriminos. A 42's school project. See the pdf file ;)
+Emulate a kind of Tetris IA able to create the smallest square with given tetriminos. A 42's school project. See the (https://github.com/Kant1-0/fillit/blob/master/doc/fillit.fr.pdf "pdf file") for more information.
 
 ___________
 #### Compile
