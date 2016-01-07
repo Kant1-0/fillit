@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:12:52 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/06 13:24:52 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/06 15:55:49 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int		main(int argc, char const *argv[])
 
 	if (argc != 2)
 	{
-		IFDEBUG(printf("Error: wrong number of arguments\n");)
+		IFERROR(ft_putstr(RESET "error");)
+		IFDEBUG(printf(KRED ": wrong number of arguments" RESET);)
+		IFERROR(ft_putstr("\n");)
 		return (0);
 	}
 	ret = read_file(argv[1], buf);

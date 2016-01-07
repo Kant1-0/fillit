@@ -6,12 +6,12 @@
 #    By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 11:53:00 by qfremeau          #+#    #+#              #
-#    Updated: 2016/01/05 18:40:10 by qfremeau         ###   ########.fr        #
+#    Updated: 2016/01/07 11:08:55 by qfremeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
-SRC = main.c reading.c listing.c
+SRC = main.c read_file.c creat_list.c check_buf.c sav_bloc.c
 LIB = lib/libft.a lib/list.a
 OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
@@ -57,17 +57,17 @@ cleanlibs:
 		make fclean
 	rm -f lib/list.a lib/list.h lib/libft.a lib/libft.a
 
-retetri:
+retetris:
 	cd generator/ && \
 		make re
 
-tetrivalid:
+validtetris:
 	cd generator/ && \
 		./tetri-gen -v -f 6
 	cp -f generator/sample.fillit ./
 	cat -e sample.fillit
 
-tetrifalse:
+invalidtetris:
 	cd generator/ && \
 		./tetri-gen -i -f 6
 	cp -f generator/sample.fillit ./
