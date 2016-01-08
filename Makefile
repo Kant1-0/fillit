@@ -6,7 +6,7 @@
 #    By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 11:53:00 by qfremeau          #+#    #+#              #
-#    Updated: 2016/01/08 12:38:29 by qfremeau         ###   ########.fr        #
+#    Updated: 2016/01/08 13:04:12 by qfremeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,22 +36,22 @@ re: fclean all
 libs:
 	cd $(PATHLIBFT) && \
 		make
-	cp -f $(PATHLIBFT)list.a lib/
-	cp -f $(PATHLIBFT)list.h lib/
+	cp -f $(PATHLIBFT)libft.a lib/
+	cp -f $(PATHLIBFT)libft.h lib/
 	cd $(PATHLIBLIST) && \
 		make
-	cp -f $(PATHLIBLIST)libft.a lib/
-	cp -f $(PATHLIBLIST)libft.h lib/
+	cp -f $(PATHLIBLIST)list.a lib/
+	cp -f $(PATHLIBLIST)list.h lib/
 
 relibs:
 	cd $(PATHLIBFT) && \
 		make re
-	cp -f $(PATHLIBFT)list.a lib/
-	cp -f $(PATHLIBFT)list.h lib/
+	cp -f $(PATHLIBFT)libft.a lib/
+	cp -f $(PATHLIBFT)libft.h lib/
 	cd $(PATHLIBLIST) && \
 		make re
-	cp -f $(PATHLIBLIST)libft.a lib/
-	cp -f $(PATHLIBLIST)libft.h lib/
+	cp -f $(PATHLIBLIST)list.a lib/
+	cp -f $(PATHLIBLIST)list.h lib/
 
 cleanlibs:
 	cd $(PATHLIBFT) && \
