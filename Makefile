@@ -6,9 +6,12 @@
 #    By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 11:53:00 by qfremeau          #+#    #+#              #
-#    Updated: 2016/01/07 11:08:55 by qfremeau         ###   ########.fr        #
+#    Updated: 2016/01/08 12:38:29 by qfremeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+PATHLIBFT = ../libft/
+PATHLIBLIST = ../lib-list/
 
 NAME = fillit
 SRC = main.c read_file.c creat_list.c check_buf.c sav_bloc.c
@@ -31,29 +34,29 @@ fclean: clean
 re: fclean all
 
 libs:
-	cd ../lib-list && \
+	cd $(PATHLIBFT) && \
 		make
-	cp -f ../lib-list/list.a lib/
-	cp -f ../lib-list/list.h lib/
-	cd ../libft && \
+	cp -f $(PATHLIBFT)list.a lib/
+	cp -f $(PATHLIBFT)list.h lib/
+	cd $(PATHLIBLIST) && \
 		make
-	cp -f ../libft/libft.a lib/
-	cp -f ../libft/libft.h lib/
+	cp -f $(PATHLIBLIST)libft.a lib/
+	cp -f $(PATHLIBLIST)libft.h lib/
 
 relibs:
-	cd ../lib-list && \
+	cd $(PATHLIBFT) && \
 		make re
-	cp -f ../lib-list/list.a lib/
-	cp -f ../lib-list/list.h lib/
-	cd ../libft && \
+	cp -f $(PATHLIBFT)list.a lib/
+	cp -f $(PATHLIBFT)list.h lib/
+	cd $(PATHLIBLIST) && \
 		make re
-	cp -f ../libft/libft.a lib/
-	cp -f ../libft/libft.h lib/
+	cp -f $(PATHLIBLIST)libft.a lib/
+	cp -f $(PATHLIBLIST)libft.h lib/
 
 cleanlibs:
-	cd ../lib-list && \
+	cd $(PATHLIBFT) && \
 		make fclean
-	cd ../libft && \
+	cd $(PATHLIBLIST) && \
 		make fclean
 	rm -f lib/list.a lib/list.h lib/libft.a lib/libft.a
 

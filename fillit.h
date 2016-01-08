@@ -6,13 +6,14 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:08:49 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/07 11:18:07 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/07 16:09:36 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
+// ************************************************************************** //
 // Includes
 #include "lib/libft.h"
 #include "lib/list.h"
@@ -27,9 +28,11 @@
 #define FAIL -1
 #define TRUE 1
 #define FALSE 0
+
 // Macro for read function
 #define BUFSIZE 4095
-// Macro for Printf Colors
+
+// Macro for printf colors
 #define KRED  "\x1B[31m"
 #define KGRN  "\x1B[32m"
 #define KORG  "\x1B[33m"
@@ -37,7 +40,7 @@
 #define RESET "\033[0m"
 
 // ************************************************************************** //
-// Debug Conditionnal Macro
+// Debug conditionnal macros
 // Uncomment #define _MACRO to choose how to debug
 #define _DEBUG
 
@@ -64,7 +67,7 @@
 #endif
 
 // ************************************************************************** //
-// Typedef for Tetris Case Coordinates
+// Typedef for tetris case coordinates
 typedef struct	s_position
 {
 	int		x;
@@ -80,7 +83,7 @@ typedef struct	s_tetriminos
 	t_pos	bloc4;
 } 				t_tetri;
 
-// Typedef for list_tetrimonis Function
+// Typedef for list_tetrimonis function
 typedef struct	s_listing
 {
 	t_circlst	*c_list;
