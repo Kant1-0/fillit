@@ -29,5 +29,6 @@ int		main(int argc, char const *argv[])
 		return (0);
 	IFTRACE(printf(KORG "\nRet is %d\n\n" RESET "%s\n", ret, buf);)
 	list_tetriminos(buf, ret);
+	
 	return (0);
 }
