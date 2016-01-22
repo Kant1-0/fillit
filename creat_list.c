@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:19:21 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/07 12:49:22 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/22 19:00:00 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,47 +34,31 @@ void	go_backline(size_t *cur_x, size_t *cur_y)
 	IFTRACE(printf(KORG "Entering go_backline\n" RESET);)
 	*cur_x = 0;
 	*cur_y = *cur_y + 1;
-	IFTRACE(printf(KGRN "__Succeed go_backline\n" RESET);)
+	IFTRACE(printf(KVLT "__Succeed go_backline\n" RESET);)
 }
 
 // ************************************************************************** //
-// Saves bloc coordinates into temp list & check if bloc number is still < 5
-BOOL	sav_bloc(t_listing *lst)
+// Change cursor position and saves its new position
+void	move_cursor(size_t *cur_x, size_t *i)
 {
-	IFTRACE(printf(KORG "Entering sav_bloc\n" RESET);)
-	lst->bloc = lst->bloc + 1;
-	if (lst->bloc == (size_t)1)
-		sav_bloc1(&lst);
-	else if (lst->bloc == (size_t)2)
-		sav_bloc2(&lst);
-	else if (lst->bloc == (size_t)3)
-		sav_bloc3(&lst);
-	else if (lst->bloc == (size_t)4)
-		sav_bloc4(&lst);
-	else
-	{
-		IFERROR(ft_putstr(RESET "error");)
-		IFDEBUG(printf(KRED ": sav_bloc found too many blocs" RESET);)
-		IFERROR(printf("\n");)
-		return (FAIL);
-	}
-	IFTRACE(printf(KGRN "__Succeed sav_bloc\n" RESET);)
-	return (SUCCESS);
+	*cur_x = *cur_x + 1;
+	*i = *i + 1;
 }
 
 // ************************************************************************** //
 // Saves the whole tetriminos into t_list in a new elem
 BOOL	sav_minos(t_listing *lst)
 {
-	IFTRACE(printf(KORG "Entering sav_minos\n" RESET);)
+	IFTRACE(printf(KORG "Entering sav_minos #%zu\n" RESET, lst->tetri + 1);)
 	lst->tetri = lst->tetri + 1;
-	//ft_circlst_addnext(lst->c_list, (void *)lst->minos, sizeof(lst->minos));
-	// Need to find how to include a struct into a linked list
-	if (check_minos(lst->x, lst->y, lst->bloc) == FALSE)
+	if (check_minos(lst) != TRUE)
 	{
+		IFERROR(ft_putstr(RESET "error\n");)
 		IFDEBUG(printf(KRED "__Failed sav_minos\n" RESET);)
-		return (FAIL);
+		IFEXITF(return (ERROR);)
 	}
+
+	//ft_circlst_addnext(lst->c_list, (void *)lst->minos, sizeof(lst->minos));
 	IFTRACE(printf(KBLU "Tetris number %zu was successfully saved\n\n", lst->tetri);)
 	lst->i = lst->i + 1;
 	lst->y = 1;

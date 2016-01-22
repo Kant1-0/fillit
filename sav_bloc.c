@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 11:07:10 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/07 12:23:34 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/22 15:52:34 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,21 @@ void	sav_bloc4(t_listing **lst)
 	(*lst)->minos.bloc4.x = (*lst)->x;
 	(*lst)->minos.bloc4.y = (*lst)->y;
 	IFTRACE(printf(KGRN "__Succeed sav_bloc4\n" RESET);)
+}
+
+// ************************************************************************** //
+// Saves bloc coordinates into temp list & check if bloc number is still < 5
+void	sav_bloc(t_listing *lst)
+{
+	IFTRACE(printf(KORG "Entering sav_bloc\n" RESET);)
+	lst->bloc = lst->bloc + 1;
+	if (lst->bloc == (size_t)1)
+		sav_bloc1(&lst);
+	else if (lst->bloc == (size_t)2)
+		sav_bloc2(&lst);
+	else if (lst->bloc == (size_t)3)
+		sav_bloc3(&lst);
+	else if (lst->bloc == (size_t)4)
+		sav_bloc4(&lst);
+	IFTRACE(printf(KGRN "__Succeed sav_bloc\n" RESET);)
 }

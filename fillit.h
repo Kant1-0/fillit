@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:08:49 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/07 16:09:36 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/22 18:51:42 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #define BOOL int
 #define SUCCESS 1
 #define FAIL -1
+#define ERROR -1
+
 #define TRUE 1
 #define FALSE 0
 
@@ -37,7 +39,39 @@
 #define KGRN  "\x1B[32m"
 #define KORG  "\x1B[33m"
 #define KBLU  "\x1B[34m"
+#define KVLT  "\x1B[35m"
 #define RESET "\033[0m"
+
+// Macro for blocs coordinates
+#define B1X lst->minos.bloc1.x
+#define B2X lst->minos.bloc2.x
+#define B3X lst->minos.bloc3.x
+#define B4X lst->minos.bloc4.x
+
+#define B1Y lst->minos.bloc1.y
+#define B2Y lst->minos.bloc2.y
+#define B3Y lst->minos.bloc3.y
+#define B4Y lst->minos.bloc4.y
+
+#define B1XP lst->minos.bloc1.x + 1
+#define B2XP lst->minos.bloc2.x + 1
+#define B3XP lst->minos.bloc3.x + 1
+#define B4XP lst->minos.bloc4.x + 1
+
+#define B1YP lst->minos.bloc1.y + 1
+#define B2YP lst->minos.bloc2.y + 1
+#define B3YP lst->minos.bloc3.y + 1
+#define B4YP lst->minos.bloc4.y + 1
+
+#define B1XM lst->minos.bloc1.x - 1
+#define B2XM lst->minos.bloc2.x - 1
+#define B3XM lst->minos.bloc3.x - 1
+#define B4XM lst->minos.bloc4.x - 1
+
+#define B1YM lst->minos.bloc1.y - 1
+#define B2YM lst->minos.bloc2.y - 1
+#define B3YM lst->minos.bloc3.y - 1
+#define B4YM lst->minos.bloc4.y - 1
 
 // ************************************************************************** //
 // Debug conditionnal macros
@@ -64,6 +98,14 @@
 #define IFERROR(x) x
 #else
 #define IFERROR(x)
+#endif
+
+#define _EXITF
+
+#ifdef _EXITF
+#define IFEXITF(x) x
+#else
+#define IFEXITF(x)
 #endif
 
 // ************************************************************************** //
@@ -103,11 +145,11 @@ BOOL	list_tetriminos(char *buf, int ret);
 // Preproccesors creat_list.c
 void	init_vars(t_listing *lst);
 void	go_backline(size_t *cur_x, size_t *cur_y);
-BOOL	sav_bloc(t_listing *lst);
+void	move_cursor(size_t *cur_x, size_t *i);
 BOOL	sav_minos(t_listing *lst);
 
 // Preproccesors check_buf.c
-BOOL	check_minos(size_t cur_x, size_t cur_y, size_t bloc);
+BOOL	check_minos(t_listing *lst);
 BOOL	check_curs(char buf, size_t cur_x);
 
 // Preproccesors sav_bloc.c
@@ -115,5 +157,6 @@ void	sav_bloc1(t_listing **lst);
 void	sav_bloc2(t_listing **lst);
 void	sav_bloc3(t_listing **lst);
 void	sav_bloc4(t_listing **lst);
+void	sav_bloc(t_listing *lst);
 
 #endif
