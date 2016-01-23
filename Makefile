@@ -6,7 +6,7 @@
 #    By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 11:53:00 by qfremeau          #+#    #+#              #
-#    Updated: 2016/01/08 13:04:12 by qfremeau         ###   ########.fr        #
+#    Updated: 2016/01/23 16:42:45 by qfremeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ PATHLIBFT = ../libft/
 PATHLIBLIST = ../lib-list/
 
 NAME = fillit
-SRC = main.c read_file.c creat_list.c check_buf.c sav_bloc.c
+SRC = main.c read_file.c read_list.c check_buf.c sav_bloc.c sav_list.c
 LIB = lib/libft.a lib/list.a
 OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror

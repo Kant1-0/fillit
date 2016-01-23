@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 11:07:10 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/22 15:52:34 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/23 17:37:07 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // ************************************************************************** //
 // Saves coordinates into different blocs 1 to 4 according to sav_bloc function
-void	sav_bloc1(t_listing **lst)
+static void		sav_bloc1(t_listing **lst)
 {
 	IFTRACE(printf(KORG "Entering sav_bloc1\n" RESET);)
 	(*lst)->minos.bloc1.x = (*lst)->x;
@@ -23,7 +23,7 @@ void	sav_bloc1(t_listing **lst)
 }
 
 // Bloc 2
-void	sav_bloc2(t_listing **lst)
+static void		sav_bloc2(t_listing **lst)
 {
 	IFTRACE(printf(KORG "Entering sav_bloc2\n" RESET);)
 	(*lst)->minos.bloc2.x = (*lst)->x;
@@ -32,7 +32,7 @@ void	sav_bloc2(t_listing **lst)
 }
 
 // Bloc 3
-void	sav_bloc3(t_listing **lst)
+static void		sav_bloc3(t_listing **lst)
 {
 	IFTRACE(printf(KORG "Entering sav_bloc3\n" RESET);)
 	(*lst)->minos.bloc3.x = (*lst)->x;
@@ -41,7 +41,7 @@ void	sav_bloc3(t_listing **lst)
 }
 
 // Bloc 4
-void	sav_bloc4(t_listing **lst)
+static void		sav_bloc4(t_listing **lst)
 {
 	IFTRACE(printf(KORG "Entering sav_bloc4\n" RESET);)
 	(*lst)->minos.bloc4.x = (*lst)->x;
@@ -51,7 +51,7 @@ void	sav_bloc4(t_listing **lst)
 
 // ************************************************************************** //
 // Saves bloc coordinates into temp list & check if bloc number is still < 5
-void	sav_bloc(t_listing *lst)
+void			sav_bloc(t_listing *lst)
 {
 	IFTRACE(printf(KORG "Entering sav_bloc\n" RESET);)
 	lst->bloc = lst->bloc + 1;

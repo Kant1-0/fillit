@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:08:49 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/22 18:51:42 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/23 17:43:37 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef struct	s_position
 
 typedef struct	s_tetriminos
 {
-	size_t	nu;
+	int		nu;
 	t_pos	bloc1;
 	t_pos	bloc2;
 	t_pos	bloc3;
@@ -142,21 +142,20 @@ typedef struct	s_listing
 int		read_file(char const *file, char *buf);
 BOOL	list_tetriminos(char *buf, int ret);
 
-// Preproccesors creat_list.c
+// Preproccesors read_list.c
 void	init_vars(t_listing *lst);
 void	go_backline(size_t *cur_x, size_t *cur_y);
 void	move_cursor(size_t *cur_x, size_t *i);
-BOOL	sav_minos(t_listing *lst);
+void	reset_vars(t_listing **lst);
 
 // Preproccesors check_buf.c
 BOOL	check_minos(t_listing *lst);
 BOOL	check_curs(char buf, size_t cur_x);
 
 // Preproccesors sav_bloc.c
-void	sav_bloc1(t_listing **lst);
-void	sav_bloc2(t_listing **lst);
-void	sav_bloc3(t_listing **lst);
-void	sav_bloc4(t_listing **lst);
 void	sav_bloc(t_listing *lst);
+
+// Preproccesors sav_list.c
+BOOL	sav_minos(t_listing *lst);
 
 #endif
