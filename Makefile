@@ -6,72 +6,56 @@
 #    By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 11:53:00 by qfremeau          #+#    #+#              #
-#    Updated: 2016/01/23 16:42:45 by qfremeau         ###   ########.fr        #
+#    Updated: 2016/06/24 13:31:46 by qfremeau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PATHLIBFT = ../libft/
-PATHLIBLIST = ../lib-list/
-
 NAME = fillit
-SRC = main.c read_file.c read_list.c check_buf.c sav_bloc.c sav_list.c
-LIB = lib/libft.a lib/list.a
-OBJ = $(SRC:.c=.o)
-FLAGS = -Wall -Wextra -Werror
 
-all:
-	clang $(FLAGS) -c $(SRC)
-	clang -o $(NAME) $(FLAGS) $(OBJ) $(LIB)
+SRC_PATH = ./src/
+SRC_NAME = 	main.c\
+			arrange.c \
+			check.c \
+			shape.c \
+			read.c \
+			tetriminos.c \
+			solve.c
 
-$(NAME): all
+OBJ_PATH = ./obj/
+OBJ_NAME = $(SRC_NAME:.c=.o)
+
+INC_PATH = ./include/
+
+LIB = libft.a
+
+CC = gcc
+CFLAGS = -Werror -Wall -Wextra
+
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(INC) -o $(NAME) $(LIB) $(OBJ)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 clean:
-	rm -f $(OBJ)
+	rm -fv $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null
 
 fclean: clean
-	rm -f $(NAME)
+	rm -fv $(NAME)
 
 re: fclean all
 
-libs:
-	cd $(PATHLIBFT) && \
-		make
-	cp -f $(PATHLIBFT)libft.a lib/
-	cp -f $(PATHLIBFT)libft.h lib/
-	cd $(PATHLIBLIST) && \
-		make
-	cp -f $(PATHLIBLIST)list.a lib/
-	cp -f $(PATHLIBLIST)list.h lib/
+norme:
+	norminette $(SRC)
+	norminette $(INC_PATH)fillit.h
 
-relibs:
-	cd $(PATHLIBFT) && \
-		make re
-	cp -f $(PATHLIBFT)libft.a lib/
-	cp -f $(PATHLIBFT)libft.h lib/
-	cd $(PATHLIBLIST) && \
-		make re
-	cp -f $(PATHLIBLIST)list.a lib/
-	cp -f $(PATHLIBLIST)list.h lib/
-
-cleanlibs:
-	cd $(PATHLIBFT) && \
-		make fclean
-	cd $(PATHLIBLIST) && \
-		make fclean
-	rm -f lib/list.a lib/list.h lib/libft.a lib/libft.a
-
-retetris:
-	cd generator/ && \
-		make re
-
-validtetris:
-	cd generator/ && \
-		./tetri-gen -v -f 6
-	cp -f generator/sample.fillit ./
-	cat -e sample.fillit
-
-invalidtetris:
-	cd generator/ && \
-		./tetri-gen -i -f 6
-	cp -f generator/sample.fillit ./
-	cat -e sample.fillit
+.PHONY: all clean fclean re norme
+	
